@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     curl \
     portaudio19-dev \
+    espeak-ng \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy dependency requirements
