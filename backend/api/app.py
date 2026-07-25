@@ -27,7 +27,7 @@ from fastapi.responses import StreamingResponse
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.core.config import ASSISTANT_NAME
+from app.core.config import ASSISTANT_NAME, FRONTEND_URL
 from app.db.database import init_db
 from app.core.orchestrator import Orchestrator
 from app.utils.event_bus import (
@@ -49,9 +49,13 @@ app = FastAPI(
     version="2.0.0",
 )
 
+allowed_origins = ["http://localhost:5173", "http://localhost:3000", "app://.", "file://*"]
+if FRONTEND_URL:
+    allowed_origins.append(FRONTEND_URL)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", "app://.", "file://*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

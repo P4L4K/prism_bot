@@ -23,10 +23,11 @@ LOGS_DIR.mkdir(parents=True, exist_ok=True)
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{DATA_DIR / 'assistant.db'}")
 LOG_FILE = LOGS_DIR / "assistant.log"
 
-# ── API Keys ────────────────────────────────────────────────────────────────────
+# ── API Keys & External URLs ───────────────────────────────────────────────────────
 OPENWEATHERMAP_API_KEY: str = os.getenv("OPENWEATHERMAP_API_KEY", "")
 NEWS_API_KEY: str = os.getenv("NEWS_API_KEY", "")
 PICOVOICE_ACCESS_KEY: str = os.getenv("PICOVOICE_ACCESS_KEY", "")
+FRONTEND_URL: str = os.getenv("FRONTEND_URL", "")
 
 # ── Assistant Identity ──────────────────────────────────────────────────────────
 ASSISTANT_NAME: str = os.getenv("PRISM_ASSISTANT_NAME", "PRISM")
