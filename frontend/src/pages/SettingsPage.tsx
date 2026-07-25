@@ -9,7 +9,7 @@ export const SettingsPage = () => {
   const [citySuggestions, setCitySuggestions] = useState<string[]>([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/settings')
+    axios.get('/api/settings')
       .then(res => setSettings(res.data))
       .catch(console.error);
   }, []);
@@ -17,7 +17,7 @@ export const SettingsPage = () => {
   const handleSave = async () => {
     setSaving(true);
     try {
-      await axios.post('http://localhost:8000/api/settings', settings);
+      await axios.post('/api/settings', settings);
       alert('Settings saved successfully!');
     } catch (e) {
       console.error(e);

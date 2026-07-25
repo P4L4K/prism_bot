@@ -24,7 +24,7 @@ export const StorybookDashboard = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/history?limit=50&session_id=${currentBookId}`);
+        const res = await axios.get(`/api/history?limit=50&session_id=${currentBookId}`);
         const turns = res.data.reverse();
         const history: ChatTurn[] = [];
         turns.forEach((t: any) => {
@@ -59,7 +59,7 @@ export const StorybookDashboard = () => {
     setInputText('');
     
     try {
-      await axios.post('http://localhost:8000/api/chat', { text: textToSend, session_id: currentBookId, is_typed: true });
+      await axios.post('/api/chat', { text: textToSend, session_id: currentBookId, is_typed: true });
     } catch (e) {
       console.error(e);
     }
@@ -67,7 +67,7 @@ export const StorybookDashboard = () => {
 
   const handleListen = async () => {
     try {
-      await axios.post('http://localhost:8000/api/listen', { session_id: currentBookId });
+      await axios.post('/api/listen', { session_id: currentBookId });
     } catch (e) {
       console.error(e);
     }

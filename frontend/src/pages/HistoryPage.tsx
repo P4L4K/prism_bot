@@ -11,14 +11,14 @@ export const HistoryPage = () => {
   const { data: books, isLoading, refetch } = useQuery({
     queryKey: ['history_books'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:8000/api/history/books');
+      const res = await axios.get('/api/history/books');
       return res.data;
     }
   });
 
   const clearHistory = async () => {
     if (confirm('Delete all history?')) {
-      await axios.post('http://localhost:8000/api/history/clear');
+      await axios.post('/api/history/clear');
       refetch();
     }
   };

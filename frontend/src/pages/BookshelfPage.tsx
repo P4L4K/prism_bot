@@ -12,14 +12,14 @@ export const BookshelfPage = () => {
   const { data: books, isLoading, refetch } = useQuery({
     queryKey: ['history_books'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:8000/api/history/books');
+      const res = await axios.get('/api/history/books');
       return res.data;
     }
   });
 
   const clearHistory = async () => {
     if (confirm('Burn the bookshelf? All stories will be lost!')) {
-      await axios.post('http://localhost:8000/api/history/clear');
+      await axios.post('/api/history/clear');
       refetch();
     }
   };
@@ -43,7 +43,7 @@ export const BookshelfPage = () => {
     const newTitle = window.prompt("Enter a new title for this story:", oldTitle);
     if (newTitle && newTitle.trim()) {
       try {
-        await axios.post('http://localhost:8000/api/history/rename', {
+        await axios.post('/api/history/rename', {
           session_id: id,
           title: newTitle.trim()
         });

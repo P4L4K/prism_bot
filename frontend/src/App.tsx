@@ -11,7 +11,7 @@ function App() {
   const { currentView } = useAppStore();
   
   // Connect to FastAPI backend SSE bridge
-  useSSE('http://localhost:8000/api/events');
+  useSSE(`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'}/api/events`);
 
   return (
     <ErrorBoundary>

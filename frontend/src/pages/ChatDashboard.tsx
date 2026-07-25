@@ -11,7 +11,7 @@ export const ChatDashboard = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/history?limit=50&session_id=${currentBookId}`);
+        const res = await axios.get(`/api/history?limit=50&session_id=${currentBookId}`);
         const turns = res.data;
         const history: ChatTurn[] = [];
         // turns are returned newest first usually, so let's reverse them to chronological
@@ -47,7 +47,7 @@ export const ChatDashboard = () => {
     setInputText('');
     
     try {
-      await axios.post('http://localhost:8000/api/chat', { text: textToSend, session_id: currentBookId });
+      await axios.post('/api/chat', { text: textToSend, session_id: currentBookId });
     } catch (e) {
       console.error(e);
     }
@@ -55,7 +55,7 @@ export const ChatDashboard = () => {
 
   const handleListen = async () => {
     try {
-      await axios.post('http://localhost:8000/api/listen');
+      await axios.post('/api/listen');
     } catch (e) {
       console.error(e);
     }
