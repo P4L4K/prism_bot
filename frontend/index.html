@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script>
+      window.addEventListener('error', function(event) {
+        fetch('http://localhost:8000/api/log_error', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: event.message, stack: event.error ? event.error.stack : '' })
+        }).catch(console.error);
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        fetch('http://localhost:8000/api/log_error', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: event.reason ? event.reason.message : 'unhandled rejection', stack: event.reason ? event.reason.stack : '' })
+        }).catch(console.error);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

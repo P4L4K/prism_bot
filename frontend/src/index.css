@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #EAE6df; /* Warm parchment base */
+  --color-sidebar: #D1C9BE;    /* Bookshelf wood/neutral */
+  --color-surface: #F9F6F0;    /* Fresh paper */
+  --color-card: #FDFBFA;       /* Bright paper overlay */
+  --color-card-hover: #F2EFE9;
+  --color-chip: #EADCD1;
+  --color-modal: #F9F6F0;
+
+  --color-accent: #E4A0B7;     /* Soft anime pink/sakura */
+  --color-accent-soft: #FDE8EF;
+  --color-primary: #86A89D;    /* Minty sage green */
+  --color-primary-soft: #E3EFEA;
+  --color-primary-light: #6A9084;
+
+  --color-text-pri: #3D3935;   /* Soft ink black/brown */
+  --color-text-sec: #6C665F;
+  --color-text-muted: #9E9891;
+  --color-text-on-accent: #FFFFFF;
+
+  --color-border-card: #D3CDC6;
+
+  --color-intent-mint-bg: #e2f9ee;
+  --color-intent-mint-fg: #1b6b4f;
+  --color-intent-peach-bg: #ffebe0;
+  --color-intent-peach-fg: #c85a17;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    /* Subtle noise/paper texture on the entire body */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    color: var(--color-text-pri);
+    font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif; /* Softer, rounder font */
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden; /* App is desktop frame */
+  }
+}
+
+/* Scrapbook & Paper effects */
+.paper-texture {
+  background-color: var(--color-surface);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03),
+    inset 0 0 40px rgba(0, 0, 0, 0.02);
+}
+
+.washi-tape {
+  position: absolute;
+  background-color: rgba(228, 160, 183, 0.6); /* Semi-transparent accent */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transform: rotate(-2deg);
+  opacity: 0.85;
+}
+.washi-tape::before, .washi-tape::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 5px;
+  background-size: 5px 100%;
+}
+
+.polaroid {
+  background: white;
+  padding: 10px 10px 40px 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: rotate(2deg);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.polaroid:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 10;
+}
+
+.handwritten {
+  font-family: 'Comic Sans MS', 'Caveat', cursive, sans-serif;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(249, 246, 240, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-card {
+  background: rgba(253, 251, 250, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border-card);
+}
+
+/* Drag region for electron */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* react-pageflip specific adjustments */
+.stf__wrapper {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 4px 8px 8px 4px;
+}
+.book-spine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.02) 20%, transparent 80%, rgba(255,255,255,0.2));
+  z-index: 50;
+  pointer-events: none;
+}

@@ -1,0 +1,45 @@
+# PRISM Voice Assistant — Python Dependencies
+# Install with: pip install -r requirements.txt
+# Then run: python -m spacy download en_core_web_sm
+
+# ─── UI ────────────────────────────────────────────────────────────────────────
+customtkinter>=5.2.0
+Pillow>=10.0.0
+
+# ─── Speech ────────────────────────────────────────────────────────────────────
+SpeechRecognition>=3.10.0
+# pyaudio: install via  pip install pipwin && pipwin install pyaudio  (Windows)
+# or:                   pip install pyaudio  (if pre-built wheel available)
+pyaudio>=0.2.14
+pyttsx3>=2.90
+vosk>=0.3.45
+
+# ─── Wake Word (optional) ──────────────────────────────────────────────────────
+openwakeword>=0.6.0
+onnxruntime>=1.17.0
+
+# ─── NLP ───────────────────────────────────────────────────────────────────────
+spacy>=3.7.0
+dateparser>=1.2.0
+
+# ─── Database ──────────────────────────────────────────────────────────────────
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+psycopg2-binary>=2.9.9
+
+# ─── Scheduling & Notifications ────────────────────────────────────────────────
+APScheduler>=3.10.0
+plyer>=2.1.0
+
+# ─── Networking & Config ───────────────────────────────────────────────────────
+httpx>=0.27.0
+python-dotenv>=1.0.0
+pydantic-settings>=2.0.0
+
+# ─── Testing ───────────────────────────────────────────────────────────────────
+pytest>=8.0.0
+pytest-mock>=3.14.0
+freezegun>=1.4.0
+
+# ─── Packaging ─────────────────────────────────────────────────────────────────
+pyinstaller>=6.0.0
