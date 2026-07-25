@@ -88,5 +88,5 @@ export function useSSE(url: string) {
     return () => {
       eventSource.close();
     };
-  }, [url]);
+  }, [url, setIsListening, addChatTurn, setIsSpeaking, setLiveTranscript, setIsThinking]);
 }

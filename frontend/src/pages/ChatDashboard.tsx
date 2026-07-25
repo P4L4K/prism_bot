@@ -30,7 +30,7 @@ export const ChatDashboard = () => {
       }
     };
     fetchHistory();
-  }, [currentBookId]);
+  }, [currentBookId, setChatHistory]);
 
   const handleSend = async () => {
     if (!inputText.trim()) return;

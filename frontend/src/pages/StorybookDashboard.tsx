@@ -41,7 +41,7 @@ export const StorybookDashboard = () => {
       }
     };
     fetchHistory();
-  }, [currentBookId]);
+  }, [currentBookId, setChatHistory]);
 
   const handleSend = async () => {
     if (!inputText.trim()) return;
@@ -198,7 +198,7 @@ export const StorybookDashboard = () => {
                 ) : (
                   <ReactMarkdown 
                     components={{
-                      code({node, inline, className, children, ...props}: any) {
+                      code({_node, inline, className, children, ...props}: any) {
                         const match = /language-(\w+)/.exec(className || '')
                         return !inline && match ? (
                           <div className="relative my-4 transform -rotate-1 shadow-md bg-zinc-900 rounded-lg p-2 overflow-hidden border-2 border-[var(--color-border-card)]">
