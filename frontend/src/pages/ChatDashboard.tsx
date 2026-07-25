@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppStore, type ChatTurn } from '../store/useAppStore';
 import { Send, Mic } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 
 export const ChatDashboard = () => {
-  const { currentBookId, chatHistory, setChatHistory, liveTranscript, isListening, isSpeaking } = useAppStore();
+  const { currentBookId, chatHistory, setChatHistory, liveTranscript, isListening } = useAppStore();
   const [inputText, setInputText] = useState('');
 
   useEffect(() => {

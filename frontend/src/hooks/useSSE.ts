@@ -3,7 +3,7 @@ import { useAppStore } from '../store/useAppStore';
 
 export function useSSE(url: string) {
   const {
-    currentBookId,
+
     setIsListening,
     setIsSpeaking,
     setIsThinking,

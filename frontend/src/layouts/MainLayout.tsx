@@ -2,6 +2,12 @@ import React from 'react';
 import { useAppStore } from '../store/useAppStore';
 import { Library, Settings } from 'lucide-react';
 
+declare global {
+  interface Window {
+    electron?: any;
+  }
+}
+
 interface MainLayoutProps {
   children: React.ReactNode;
 }

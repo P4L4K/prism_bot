@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { RefreshCw, Trash2, MessageSquare, ChevronRight } from 'lucide-react';

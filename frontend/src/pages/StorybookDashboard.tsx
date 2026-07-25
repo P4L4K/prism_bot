@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAppStore, type ChatTurn } from '../store/useAppStore';
 import { Mic, ArrowRight } from 'lucide-react';
 import axios from 'axios';
@@ -17,7 +17,7 @@ interface PageData {
 }
 
 export const StorybookDashboard = () => {
-  const { currentBookId, chatHistory, setChatHistory, liveTranscript, isListening, isSpeaking, isThinking, setIsThinking, addChatTurn, setIsListening } = useAppStore();
+  const { currentBookId, chatHistory, setChatHistory, liveTranscript, isListening, isSpeaking, isThinking, setIsThinking } = useAppStore();
   const [inputText, setInputText] = useState('');
   const bookRef = useRef<any>(null);
 

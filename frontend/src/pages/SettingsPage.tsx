@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Save } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -28,7 +28,7 @@ export const SettingsPage = () => {
   };
 
   const handleChange = (key: string, val: any) => {
-    setSettings(prev => ({ ...prev, [key]: val }));
+    setSettings((prev: any) => ({ ...prev, [key]: val }));
   };
 
   const handleCityChange = async (val: string) => {
